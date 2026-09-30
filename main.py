@@ -29,7 +29,7 @@ with app.app_context():
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return "<p>hiiiii, Hello, World!</p>"
 
 @app.route("/students", methods = ["POST"])
 def add_student():
@@ -37,11 +37,12 @@ def add_student():
   student=Student(name=student_details["name"], age=student_details["age"])
   db.session.add(student)
   db.session.commit()
-  return {'Message': 'Succesfully Added'}
+  return {'Message': 'Succesfully Added yayayy'}
 
 @app.route("/students", methods = ["GET"])
 def get_all_students_data():
   students = Student.query.all()
+  print('yusra')
   return students_schema.dump(students)
 
 @app.route("/students/<int:student_id>", methods = ["GET"])
@@ -62,7 +63,7 @@ def update_student(student_id):
 
     db.session.commit()
     
-    return {'Message': 'Succesfully Updated'}
+    return {'Message': 'Succesfully Updated yayyy'}
 
 @app.route("/students/<int:student_id>", methods = ["DELETE"])
 def delete_student(student_id):
@@ -71,7 +72,7 @@ def delete_student(student_id):
     db.session.delete(student)
     db.session.commit()
     
-    return {'Message': 'Succesfully Deleted'}
+    return {'Message': 'Succesfully Deleted yayyy'}
 
 if __name__=="__main__":
     app.run(debug = True)
